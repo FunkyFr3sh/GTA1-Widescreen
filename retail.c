@@ -98,8 +98,8 @@ void retail_init(int a, int b)
     ((void(*)(int, int))0x0049CFF0)(a, b);
 
     /* load custom resolution from .ini */
-    g_width  = GetPrivateProfileIntA("GTA", "Width", 1280, ".\\GTA.ini");
-    g_height = GetPrivateProfileIntA("GTA", "Height", 720, ".\\GTA.ini");
+    g_width  = GetPrivateProfileIntA("GTA", "Width", 1068, ".\\GTA.ini");
+    g_height = GetPrivateProfileIntA("GTA", "Height", 600, ".\\GTA.ini");
 
     /* add our custom resolution to the list of supported resolutions */
     LPDDENUMMODESCALLBACK lpEnumModesCallback = (void*)0x004A1480;
