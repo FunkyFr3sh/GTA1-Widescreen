@@ -15,7 +15,7 @@ static void __declspec(naked) london_check_chosen_res16()
 
         mov g_is_widescreen, 0
 
-        cmp esi, 0x00504e78
+        cmp esi, 0x00505124
         jnz patch_disabled
 
         mov g_is_widescreen, 1
@@ -33,7 +33,7 @@ static void __declspec(naked) london_check_chosen_res32()
 
         mov g_is_widescreen, 0
 
-        cmp esi, 0x005044f8
+        cmp esi, 0x005047a4
         jnz patch_disabled
 
         mov g_is_widescreen, 1
@@ -116,12 +116,12 @@ void london_init(int a, int b)
     lpEnumModesCallback((LPDDSURFACEDESC)&s, 0);
 
     /* overwrite first resolution in the list (320x200x16) with our custom resolution */
-    patch_setdword((DWORD*)0x00504e78 + 0, g_width - 1);
-    patch_setdword((DWORD*)0x00504e78 + 1, g_height - 1);
+    patch_setdword((DWORD*)0x00505124 + 0, g_width - 1);
+    patch_setdword((DWORD*)0x00505124 + 1, g_height - 1);
 
     /* overwrite first resolution in the list (320x200x32) with our custom resolution */
-    patch_setdword((DWORD*)0x005044f8 + 0, g_width  - 1);
-    patch_setdword((DWORD*)0x005044f8 + 1, g_height - 1);
+    patch_setdword((DWORD*)0x005047a4 + 0, g_width  - 1);
+    patch_setdword((DWORD*)0x005047a4 + 1, g_height - 1);
 
     /* check chosen res and make sure our patch is disabled for any res other than the first one in the list */
     patch_call((void*)0x004C247F, (void*)london_check_chosen_res16);

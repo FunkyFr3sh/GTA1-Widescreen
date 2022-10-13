@@ -15,7 +15,7 @@ static void __declspec(naked) retail_check_chosen_res16()
 
         mov g_is_widescreen, 0
 
-        cmp esi, 0x004c5778
+        cmp esi, 0x004c5a24
         jnz patch_disabled
 
         mov g_is_widescreen, 1
@@ -33,7 +33,7 @@ static void __declspec(naked) retail_check_chosen_res32()
 
         mov g_is_widescreen, 0
 
-        cmp esi, 0x004c4df8
+        cmp esi, 0x004c50a4
         jnz patch_disabled
 
         mov g_is_widescreen, 1
@@ -129,13 +129,13 @@ void retail_init(int a, int b)
 
     lpEnumModesCallback((LPDDSURFACEDESC)&s, 0);
 
-    /* overwrite first resolution in the list (320x200x16) with our custom resolution */
-    patch_setdword((DWORD*)0x004c5778 + 0, g_width  - 1);
-    patch_setdword((DWORD*)0x004c5778 + 1, g_height - 1);
+    /* overwrite 800x600x16 with our custom resolution */
+    patch_setdword((DWORD*)0x004c5a24 + 0, g_width  - 1);
+    patch_setdword((DWORD*)0x004c5a24 + 1, g_height - 1);
 
-    /* overwrite first resolution in the list (320x200x32) with our custom resolution */
-    patch_setdword((DWORD*)0x004c4df8 + 0, g_width  - 1);
-    patch_setdword((DWORD*)0x004c4df8 + 1, g_height - 1);
+    /* overwrite 800x600x32 with our custom resolution */
+    patch_setdword((DWORD*)0x004c50a4 + 0, g_width  - 1);
+    patch_setdword((DWORD*)0x004c50a4 + 1, g_height - 1);
 
     /* check chosen res and make sure our patch is disabled for any res other than the first one in the list */
     patch_call((void*)0x004A06DF, (void*)retail_check_chosen_res16);
