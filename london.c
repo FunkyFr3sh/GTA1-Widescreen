@@ -123,7 +123,7 @@ void london_init(int a, int b)
     patch_setdword((DWORD*)0x005047a4 + 0, g_width  - 1);
     patch_setdword((DWORD*)0x005047a4 + 1, g_height - 1);
 
-    /* check chosen res and make sure our patch is disabled for any res other than the first one in the list */
+    /* check chosen res and make sure our patch is disabled for any res other than 800x600 */
     patch_call((void*)0x004C247F, (void*)london_check_chosen_res16);
     patch_call((void*)0x004C2071, (void*)london_check_chosen_res32);
 

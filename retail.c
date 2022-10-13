@@ -137,7 +137,7 @@ void retail_init(int a, int b)
     patch_setdword((DWORD*)0x004c50a4 + 0, g_width  - 1);
     patch_setdword((DWORD*)0x004c50a4 + 1, g_height - 1);
 
-    /* check chosen res and make sure our patch is disabled for any res other than the first one in the list */
+    /* check chosen res and make sure our patch is disabled for any res other than 800x600 */
     patch_call((void*)0x004A06DF, (void*)retail_check_chosen_res16);
     patch_call((void*)0x004A02D1, (void*)retail_check_chosen_res32);
 
