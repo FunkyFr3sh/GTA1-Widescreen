@@ -115,11 +115,11 @@ void london61_init(int a, int b)
 
     lpEnumModesCallback((LPDDSURFACEDESC)&s, 0);
 
-    /* overwrite first resolution in the list (320x200x16) with our custom resolution */
+    /* overwrite 800x600x16 with our custom resolution */
     patch_setdword((DWORD*)0x005065bc + 0, g_width  - 1);
     patch_setdword((DWORD*)0x005065bc + 1, g_height - 1);
 
-    /* overwrite first resolution in the list (320x200x32) with our custom resolution */
+    /* overwrite 800x600x32 with our custom resolution */
     patch_setdword((DWORD*)0x00505c3c + 0, g_width  - 1);
     patch_setdword((DWORD*)0x00505c3c + 1, g_height - 1);
 
