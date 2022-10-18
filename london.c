@@ -78,6 +78,14 @@ static void __declspec(naked) london_restore_width()
     }
 }
 
+static void london_limiter()
+{
+    /* original function call replaced by the patch */
+    ((void(*)())0x00402E6E)();
+
+    Sleep(35);
+}
+
 void london_init(int a, int b)
 {
     /* original function call replaced by the patch */
@@ -135,4 +143,7 @@ void london_init(int a, int b)
 
     patch_clear((void*)0x0045082F, 0x90, (void*)0x00450835);
     patch_call((void*)0x0045082F, (void*)london_restore_width);
+
+    /* limiter for too fast animations in main menu */
+    patch_call((void*)0x004366B8, (void*)london_limiter);
 }
