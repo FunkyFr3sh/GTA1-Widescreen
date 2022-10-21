@@ -97,6 +97,7 @@
     <ClInclude Include="patch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="classic.c" />
     <ClCompile Include="dllmain.c" />
     <ClCompile Include="london.c" />
     <ClCompile Include="london61.c" />

@@ -3,6 +3,7 @@
 #include "patch.h"
 
 void retail_init(int a, int b);
+void classic_init(int a, int b);
 void london_init(int a, int b);
 void london61_init(int a, int b);
 
@@ -16,6 +17,11 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
         {
             patch_call((void*)0x00430194, (void*)retail_init);
         } /* GTA retail */
+        
+        else if (game_exe && memcmp((char*)game_exe + 0x00010000, "\xC7\x05\x10\x1D\x50\x00\x02\x00\x8A\xD8", 10) == 0)
+        {
+            patch_call((void*)0x004153D8, (void*)classic_init);
+        } /* GTA classic */
         
         else if (game_exe && memcmp((char*)game_exe + 0x00010000, "\x0F\xB6\x40\x07\x50\xE8\x8D\x2D\xFF\xFF", 10) == 0)
         {
