@@ -37,7 +37,7 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
     return TRUE;
 }
 
-#ifdef MSS32_EXPORTS
+#ifdef SMACKW32_EXPORTS
 #pragma comment(linker, "/export:_SmackBufferString@8=smackw32x._SmackBufferString@8,@1")
 #pragma comment(linker, "/export:_SmackBufferOpen@24=smackw32x._SmackBufferOpen@24,@2")
 #pragma comment(linker, "/export:_SmackBufferBlit@32=smackw32x._SmackBufferBlit@32,@3")
